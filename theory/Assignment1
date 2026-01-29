@@ -154,3 +154,103 @@ Therefore,
 \]
 proving that the SBP--Projection discretization is \emph{energy stable} for both central and upwind SBP operators.
 
+
+## 🔹 Assignment 1 – Task 3: Numerical Stability and CFL Analysis
+
+The SBP–Projection discretization leads to a linear ODE system
+\[
+\mathbf{u}_t = M \mathbf{u},
+\]
+where \( M \) is the discretization matrix.
+
+Numerical stability is verified by computing the eigenvalues of \( M \).
+Stability requires
+\[
+\operatorname{Re}(\lambda) \le 0,
+\]
+for all eigenvalues. Negative real parts correspond to numerical damping, while purely
+imaginary eigenvalues indicate energy-conserving wave propagation.
+
+---
+
+### Discretization Matrix
+
+Assuming
+\[
+\rho = 1, \quad c = 1, \quad \beta = 0,
+\]
+the matrix simplifies to
+\[
+M = - P D_x P,
+\qquad
+D_x =
+\begin{bmatrix}
+0 & D_+ \\
+D_- & 0
+\end{bmatrix},
+\]
+where \( D_+ \) and \( D_- \) are the 7th-order upwind SBP operators.
+Different choices of the projection operator \( P \) correspond to pressure Dirichlet,
+velocity Dirichlet, and characteristic boundary conditions.
+
+---
+
+### Eigenvalue Analysis
+
+The eigenvalues of \( M \), scaled by the grid spacing \( h \), are computed using
+MATLAB’s `eig` function:
+\[
+h\,\lambda(M).
+\]
+
+For all boundary conditions, the eigenvalues satisfy
+\[
+\operatorname{Re}(\lambda) \le 0,
+\]
+confirming numerical stability.
+
+```text
+figures/task3_eigvals_Mh.jpg
+
+
+### CFL Condition (RK4)
+
+For explicit time integration using the classical 4th-order Runge–Kutta (RK4) method,
+stability requires that all eigenvalues of the semi-discrete system satisfy
+\[
+k\,|\lambda| \le 2.78,
+\]
+where \( k \) is the time step and \( \lambda \) denotes the eigenvalues of the
+discretization matrix \( M \).
+
+Defining the CFL number as
+\[
+\alpha = \frac{k}{h},
+\]
+this yields
+\[
+\alpha = \frac{2.78}{h\,|\lambda_{\max}|},
+\]
+where \( |\lambda_{\max}| \) is the largest eigenvalue magnitude of \( M \).
+
+The maximum eigenvalues obtained numerically are
+\[
+\begin{aligned}
+|\lambda_{\max}|_{\text{characteristic}} &\approx 43.63, \\
+|\lambda_{\max}|_{p=0} &\approx 43.63, \\
+|\lambda_{\max}|_{v=0} &\approx 43.63.
+\end{aligned}
+\]
+
+Since the values are nearly identical, the CFL number is the same for all boundary
+conditions:
+\[
+\boxed{\alpha = 1.5930.}
+\]
+
+Thus, a stable time step for RK4 is given by
+\[
+\Delta t = 1.5930\, h.
+\]
+
+
