@@ -1,0 +1,51 @@
+\subsection{First task}
+In the fist task, well-posed conditions for the parameters $a_l$ and $a_r$ are derived. To do this, \ref{eq:wave} is rewritten,
+\[u_t = -\mathbf{C}^{-1}\mathbf{A} u_x -\mathbf{C}^{-1}\mathbf{D}u,\]
+
+and the energy method is used.
+\[(u,u_t) = -(u,\mathbf{C}^{-1}\mathbf{A}u_x) -(u,\mathbf{C}^{-1}\mathbf{D}u) 
+\underset{IBP}{=}\]
+\[\underset{IBP}{=} -u^*\mathbf{C}^{-1}\mathbf{A}u \big|_{x_l}^{x_r} +(u_x, \mathbf{C}^{-1}\mathbf{A}u) -(u,\mathbf{C}^{-1}\mathbf{D}u)\]
+\[+ \quad (u_t,u) = -(u_x,(\mathbf{C}^{-1}\mathbf{A})^*u) -(u,\mathbf{C}^{-1}\mathbf{D}u)\]
+here $\mathbf{C}^{-1}\mathbf{D} = (\mathbf{C}^{-1}\mathbf{D})^*$ is used,
+\begin{equation}\label{eq:energy_rate}
+    \Rightarrow \frac{d}{dt}\big\|u\big\|^2 =   
+    u^*\mathbf{C}^{-1}\mathbf{A}u \big|_{x_r}^{x_l} 
+    - \left(u_x,\left((\mathbf{C}^{-1}A)^* - \mathbf{C}^{-1}A\right)u\right) 
+    - \big\|u\big\|_{2\mathbf{C}^{-1}\mathbf{D}}^2.
+\end{equation}
+
+To derive $a_l$ and $a_r$, the boundary term (BT) is computed,
+\[u^*\mathbf{C}^{-1}\mathbf{A}u \big|_{x_r}^{x_l} = 
+(\rho c^2pv + \frac{pv}{\rho})\big|_{x_r}^{x_l} = 
+(\rho c^2pv + \frac{pv}{\rho})\big|_{x_l}
+- (\rho c^2pv + \frac{pv}{\rho})\big|_{x_r}\]
+imposing \eqref{eq:general_BCs} we get,
+\[-(\rho c^2a_lv^2 + \frac{a_lv^2}{\rho})\big|_{x_l} + (\rho c^2a_rv^2 + \frac{a_rv^2}{\rho})\big|_{x_r}.\]
+To achieve well-posedness the following conditions are needed,
+\[a_l > 0, \quad a_r < 0.\]
+
+After calculating the eigenvalues of $-\mathbf{C}^{-1}\mathbf{A}$,
+\[
+\det(\lambda I - (-\mathbf{C}^{-1}\mathbf{A})) = 0 \Leftrightarrow \lambda = \pm c,
+\]
+the Characteristic BCs become apparent,
+\[
+\begin{array}{cc}
+    p + cv = 0, & x = x_l,\\
+    p - cv = 0, & x = x_r.
+\end{array}
+\]
+Assuming $c = 1$, the Characteristic BCs become,
+\begin{equation}\label{eq:characteristic_BCs}
+    \begin{array}{cc}
+        p + v = 0, & x = x_l,\\
+        p - v = 0, & x = x_r.
+    \end{array}
+\end{equation}
+
+Now the energy, $\big\|u\big\|^2$, can be estimated with BCs according to \eqref{eq:Dirichlet_BCs_p=0}, \eqref{eq:Dirichlet_BCs_v=0} and \eqref{eq:characteristic_BCs} by integrating the energy rate \eqref{eq:energy_rate} in time,
+\[\big\|u(\cdot,t)\big\|^2 - \big\|u(\cdot,0)\big\|^2 \leqslant 0 
+\Leftrightarrow 
+\big\|u(\cdot,t)\big\|^2 \leqslant \big\|u(\cdot,0)\big\|^2,\]
+here we use that the right hand side of \eqref{eq:energy_rate} becomes $\leqslant 0$ when the BCs mentioned above are imposed and $\rho = c = 1$ is assumed.
