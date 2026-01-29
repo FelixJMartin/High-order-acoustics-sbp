@@ -1,0 +1,64 @@
+### Assignment 1 – Task 1: Well-posed Boundary Conditions
+
+Well-posedness is analyzed using the **energy method**.  
+Taking the inner product of the governing equation with \(u\) and integrating by parts yields the energy rate
+
+\[
+\frac{d}{dt}\|u\|^2
+=
+u^\ast \mathbf{C}^{-1}\mathbf{A}u \Big|_{x_r}^{x_l}
+-
+\|u\|_{2\mathbf{C}^{-1}\mathbf{D}}^2,
+\]
+
+where the volume terms vanish due to symmetry and  
+\(\mathbf{C}^{-1}\mathbf{D} = (\mathbf{C}^{-1}\mathbf{D})^\ast \ge 0\).
+
+---
+
+### Boundary Contribution
+
+The boundary term is
+\[
+u^\ast \mathbf{C}^{-1}\mathbf{A}u
+=
+\rho c^2 p v + \frac{1}{\rho} p v.
+\]
+
+Imposing the general boundary conditions
+\[
+p + a_l v = 0 \quad \text{at } x=x_l, \qquad
+p + a_r v = 0 \quad \text{at } x=x_r,
+\]
+the energy rate becomes
+\[
+-(\rho c^2 a_l + \tfrac{a_l}{\rho}) v^2 \Big|_{x_l}
++
+(\rho c^2 a_r + \tfrac{a_r}{\rho}) v^2 \Big|_{x_r}.
+\]
+
+To ensure non-increasing energy, the parameters must satisfy
+\[
+\boxed{a_l > 0, \qquad a_r < 0.}
+\]
+
+---
+
+### Characteristic Boundary Conditions
+
+The eigenvalues of \(-\mathbf{C}^{-1}\mathbf{A}\) are
+\[
+\lambda = \pm c,
+\]
+corresponding to left- and right-traveling waves.
+
+Choosing
+\[
+\boxed{
+\begin{aligned}
+p + c v &= 0, \quad x = x_l, \\
+p - c v &= 0, \quad x = x_r,
+\end{aligned}
+}
+\]
+imposes **characteristic (absorbing) boundary conditions**, eliminating incoming characteristics and yielding a well-posed problem.
