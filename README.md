@@ -7,6 +7,9 @@ High-order SBP-Projection finite difference methods for the acoustic wave equati
 **Institution:** Uppsala University  
 **Language:** MATLAB  
 
+
+
+
 ---
 
 ## 📌 Project Overview
@@ -21,11 +24,23 @@ The work focuses on:
 
 Time integration is performed using **4th-order Runge–Kutta (RK4)**.
 
+![](Figures/Assignement_2/Ass_03.png)
+
 ---
 
 ## 📁 Repository Structure
 
+theory
+- Assignement 1
+- Assignement 3
 
+COde
+- Assignement 1
+- Assignement 3
+
+Figures
+- Assignement 1
+- Assignement 3
 
 
 
