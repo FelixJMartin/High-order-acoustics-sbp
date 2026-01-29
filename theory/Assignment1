@@ -62,3 +62,95 @@ p - c v &= 0, \quad x = x_r,
 }
 \]
 imposes **characteristic (absorbing) boundary conditions**, eliminating incoming characteristics and yielding a well-posed problem.
+
+
+## Task 2 
+
+\subsection{Second task: SBP--Projection discretization and stability}
+
+In this task, stable SBP--Projection approximations of the 1D acoustic wave equation are constructed using both
+\emph{central difference SBP operators} $D_1$ and \emph{upwind SBP operators} $D_\pm$.
+Stability is proven using the discrete energy method for Dirichlet and characteristic boundary conditions.
+
+The semi-discrete SBP--Projection formulation is
+\[
+\mathbf{v}_t = -P C^{-1} (D_x + D) P \mathbf{v},
+\]
+where the projection operator is defined by
+\[
+P = I - \bar{H}^{-1} L^T (L \bar{H}^{-1} L^T)^{-1} L,
+\]
+enforcing the boundary conditions weakly.
+
+The discrete operators are given by
+\[
+D_x =
+\begin{bmatrix}
+0 & D_{1/\,+} \\
+D_{1/\,-} & 0
+\end{bmatrix},
+\quad
+C^{-1} =
+\begin{bmatrix}
+\overline{\rho c^2} & 0 \\
+0 & \overline{\rho^{-1}}
+\end{bmatrix},
+\quad
+D =
+\begin{bmatrix}
+\bar{\beta} & 0 \\
+0 & 0
+\end{bmatrix},
+\]
+and the discrete solution vector is
+\[
+\mathbf{v} =
+\begin{bmatrix}
+\bar{p} \\
+\bar{v}
+\end{bmatrix}.
+\]
+
+Different choices of the constraint matrix $L$ correspond to the imposed boundary conditions:
+pressure Dirichlet, velocity Dirichlet, and characteristic boundary conditions.
+
+---
+
+### Discrete Energy Stability
+
+To analyze stability, the discrete energy norm
+\[
+\|\mathbf{v}\|_{\tilde{H}}^2 = \mathbf{v}^T \tilde{H} \mathbf{v},
+\qquad
+\tilde{H} = \bar{H} C,
+\]
+is considered. Using symmetry properties of the SBP operators and the projection operator
+($\tilde{H}P = P^T\tilde{H}$), the energy rate satisfies
+\[
+\frac{d}{dt}\|\mathbf{v}\|_{\tilde{H}}^2
+=
+- w^T
+\begin{bmatrix}
+0 & B \\
+B & 0
+\end{bmatrix}
+w
+-
+w^T
+\begin{bmatrix}
+2H\bar{\beta} & 0 \\
+0 & 0
+\end{bmatrix}
+w,
+\]
+where $w = P\mathbf{v}$ and $B = -e_l e_l^T + e_r e_r^T$.
+
+The damping term is non-negative since $2H\bar{\beta} \ge 0$.  
+For all considered boundary conditions, the projection operator enforces $Lw = 0$, which eliminates the boundary contribution.
+
+Therefore,
+\[
+\frac{d}{dt}\|\mathbf{v}\|_{\tilde{H}}^2 \le 0,
+\]
+proving that the SBP--Projection discretization is \emph{energy stable} for both central and upwind SBP operators.
+
