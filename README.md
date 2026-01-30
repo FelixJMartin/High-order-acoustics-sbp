@@ -52,27 +52,9 @@ Figures/
 
 ## 🧪 Assignment 1 — 1D Acoustic Wave Equation
 
-### Tasks
-1. **Well-posedness analysis**
-   - Derive admissible boundary conditions
-   - Compare Dirichlet and characteristic BCs
-   - Present continuous energy estimates
+This assignment studies the **1D acoustic wave equation** using **high-order SBP-Projection finite difference methods**.  
+The focus is on **well-posed boundary conditions**, **energy stability**, **eigenvalue-based stability analysis**, and **high-order convergence** using RK4 time integration.
 
-2. **SBP-Projection discretization**
-   - Central SBP operators (D₁)
-   - Upwind SBP operators (D⁺ / D⁻)
-   - Discrete energy stability proof
-
-3. **Numerical stability**
-   - Eigenvalue analysis of discretization matrix `M`
-   - Plot eigenvalues of `hM`
-   - Compare Dirichlet vs characteristic BCs
-   - Determine CFL numbers for RK4
-
-4. **Convergence study**
-   - Validate against analytic solution
-   - Compute discrete L₂-errors
-   - Measure convergence rates (6th & 7th order)
 
 ### Numerical stability study of eigenvalues:
 
@@ -88,65 +70,81 @@ This assignment extends the SBP-Projection framework to **two spatial dimensions
 ### 🔹 Task 1: 2D Acoustic Wave Equation on a Square Domain
 
 We solve the two-dimensional acoustic wave equation on the square domain:
-\[
+
+$$
 \Omega = [-1,\,1] \times [-1,\,1]
-\]
+$$
+
 
 The governing equations are:
-\[
-C u_t + A u_x + B u_y + D u = 0
-\]
+
+$$
+\mathbf{C} \mathbf{u}_t + \mathbf{A}\ \mathbf{u}_x \+\ \mathbf{B}\ \mathbf{u}_y \+\ \mathbf{D}\ \mathbf{u}\=\ 0
+$$
+
 
 with the solution vector:
-\[
-u = \begin{bmatrix} p & v & w \end{bmatrix}^T
-\]
+
+$$
+\mathbf{u} = 
+\begin{bmatrix} p & v & w
+\end{bmatrix}^{T}
+$$
+
 
 #### Boundary Conditions
 Normal velocity is set to zero on all boundaries:
-- \( v = 0 \) on \( \partial\Omega_E \cup \partial\Omega_W \)
-- \( w = 0 \) on \( \partial\Omega_S \cup \partial\Omega_N \)
+- $v = 0$ on $\partial\Omega_E \cup \partial\Omega_W$
+- $w = 0$ on $\partial\Omega_S \cup \partial\Omega_N$
+
 
 These boundary conditions are shown to yield a **well-posed initial boundary-value problem**.
 
 #### Initial Conditions
-\[
-p(x,y,0) = e^{-100(x^2 + y^2)}, \quad
-v(x,y,0) = 0, \quad
-w(x,y,0) = 0
-\]
 
-Material parameters are set to:
-- \( \rho = 1 \)
-- \( c = 1 \)
-- \( \beta = 0 \)
+The initial pressure is a centered Gaussian, $p(x,y,0) = e^{-100(x^2 + y^2)}$, with $v(x,y,0) = w(x,y,0) = 0$.  
+Material parameters: $\rho = 1$, $c = 1$, $\beta = 0$.
 
 ---
 
 ### 🔹 Discretization and Numerical Method
 
-The domain is discretized using an **equidistant \( m \times m \) grid** with spacing:
-\[
-h = \frac{2}{m-1}
-\]
+The domain is discretized on an **equidistant $m \times m$ grid** with spacing
 
-To efficiently construct the 2D operators, **Kronecker products** are used:
-\[
-D_x = D \otimes I, \qquad D_y = I \otimes D
-\]
+$$
+h = \frac{2}{m-1}.
+$$
 
-The semi-discrete SBP-Projection formulation is:
-\[
-u_t = - P C^{-1} (D_x + D_y + D) P u
-\]
+
+Two-dimensional operators are constructed using **Kronecker products**:
+
+$$
+D_x = D \otimes I, \qquad
+D_y = I \otimes D.
+$$
+
+The semi-discrete **SBP-Projection formulation** is given by
+
+$$
+\mathbf{u}_t
+=
+- P\, \mathbf{C}^{-1}
+\bigl( D_x + D_y + \mathbf{D} \bigr)
+P\, \mathbf{u}.
+$$
 
 All matrices are stored in **sparse format** to reduce memory usage and computational cost.
+
+- - -
 
 ---
 
 ### 🔹 Numerical Setup
 - SBP operators: **7th order accurate upwind**
-- Grid size: \( m = 200 \)
+- Grid size:
+  $$
+  m = 200
+  $$
 - Time integration: **4th order Runge–Kutta (RK4)**
 - CFL number: **0.05**
 
@@ -154,7 +152,11 @@ All matrices are stored in **sparse format** to reduce memory usage and computat
 
 ### 🔹 Plots to Present
 
-The pressure field \( p(x,y,t) \) is visualized at selected time instances:
+The pressure field is visualized at selected time instances:
+
+$$
+p(x,y,t)
+$$
 
 ```text
 figures/assignment3/p_t0.png
