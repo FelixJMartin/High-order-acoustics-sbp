@@ -74,12 +74,9 @@ Figures/
    - Compute discrete L₂-errors
    - Measure convergence rates (6th & 7th order)
 
-### Plots to Include
-```markdown
-![Eigenvalues – Dirichlet BC](figures/assignment1/eigs_dirichlet.png)
-![Eigenvalues – Characteristic BC](figures/assignment1/eigs_characteristic.png)
-![Solution at t=1.8](figures/assignment1/solution_t18.png)
-````
+### Numerical stability study of eigenvalues:
+
+![Eigenvalues](Figures/Assignement_1/task3_eigvals_Mh.jpg)
 
 
 ## 🧊 Assignment 3 — Two-Dimensional Acoustic Wave Equation
