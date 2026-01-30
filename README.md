@@ -125,13 +125,7 @@ $$
 
 The semi-discrete **SBP-Projection formulation** is given by
 
-$$
-\mathbf{u}_t
-=
-- P\, \mathbf{C}^{-1}
-\bigl( D_x + D_y + \mathbf{D} \bigr)
-P\, \mathbf{u}.
-$$
+u_t = − P C⁻¹ (D_x + D_y + D) P u.
 
 All matrices are stored in **sparse format** to reduce memory usage and computational cost.
 
@@ -158,10 +152,12 @@ $$
 p(x,y,t)
 $$
 
-```text
-figures/assignment3/p_t0.png
-figures/assignment3/p_t1.png
-figures/assignment3/p_t2.png
+<p align="center">
+  <img src="Figures/Assignement_2/Ass3_01.png" width="32%" alt="timestep = 0">
+  <img src="Figures/Assignement_2/Ass3_02.png" width="32%" alt="timestep = 1">
+  <img src="Figures/Assignement_2/Ass_03.png" width="32%" alt="timestep = 2">
+</p>
+
 
 
 
