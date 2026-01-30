@@ -1,48 +1,51 @@
 # High-order-acoustics-sbp
-High-order SBP-Projection finite difference methods for the acoustic wave equation in 1D and 2D. Focus on stability, well-posed boundary conditions, interfaces, convergence studies, and RK4 time integration.
 
+High-order **SBP–Projection finite difference methods** for the acoustic wave equation in **1D and 2D**, with emphasis on stability, well-posed boundary conditions, interfaces, convergence studies, and RK4 time integration.
 
-# Acoustic Wave Equation – SBP-Projection Methods  
-**Course:** 1TD354 – Scientific Computing for Partial Differential Equations  
-**Institution:** Uppsala University  
-**Language:** MATLAB  
+---
 
+## Acoustic Wave Equation – SBP-Projection Methods
 
-
+- **Course:** 1TD354 – Scientific Computing for Partial Differential Equations  
+- **Institution:** Uppsala University  
+- **Language:** MATLAB  
 
 ---
 
 ## 📌 Project Overview
 
-This project investigates the numerical solution of the **acoustic wave equation** in **1D and 2D** using **provably stable high-order SBP-Projection finite difference methods**.  
+This project investigates the numerical solution of the **acoustic wave equation** in both **one and two spatial dimensions** using **provably stable high-order SBP–Projection finite difference methods**.
 
-The work focuses on:
-- Well-posed boundary and interface conditions
-- Stability via energy estimates and eigenvalue analysis
-- High-order convergence studies
-- Wave propagation in heterogeneous media
+The main focus areas are:
+- Well-posed boundary and interface conditions  
+- Stability via energy estimates and eigenvalue analysis  
+- High-order convergence studies  
+- Wave propagation in heterogeneous media  
 
-Time integration is performed using **4th-order Runge–Kutta (RK4)**.
+Time integration is performed using the **classical 4th-order Runge–Kutta method (RK4)**.
 
-![](Figures/Assignement_2/Ass_03.png)
+<p align="center">
+  <img src="Figures/Assignement_2/Ass_03.png" width="70%">
+</p>
 
 ---
 
 ## 📁 Repository Structure
 
-theory
-- Assignement 1
-- Assignement 3
+```text
+theory/
+├── Assignement 1
+├── Assignement 3
 
-COde
-- Assignement 1
-- Assignement 3
+Code/
+├── Assignement 1
+├── Assignement 3
 
-Figures
-- Assignement 1
-- Assignement 3
+Figures/
+├── Assignement 1
+├── Assignement 3
 
-
+```
 
 
 ---
