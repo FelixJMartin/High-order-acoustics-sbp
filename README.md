@@ -125,7 +125,9 @@ $$
 
 The semi-discrete **SBP-Projection formulation** is given by
 
-u_t = − P C⁻¹ (D_x + D_y + D) P u.
+$$
+u_t = - P C^{-1} \left( D_x + D_y + D \right) P\ u
+$$
 
 All matrices are stored in **sparse format** to reduce memory usage and computational cost.
 
@@ -134,13 +136,12 @@ All matrices are stored in **sparse format** to reduce memory usage and computat
 ---
 
 ### 🔹 Numerical Setup
-- SBP operators: **7th order accurate upwind**
-- Grid size:
-  $$
-  m = 200
-  $$
-- Time integration: **4th order Runge–Kutta (RK4)**
-- CFL number: **0.05**
+
+- **SBP operators:** 7th-order accurate upwind  
+- **Grid size:** \( m = 200 \)  
+- **Time integration:** 4th-order Runge–Kutta (RK4)  
+- **CFL number:** 0.05
+
 
 ---
 
